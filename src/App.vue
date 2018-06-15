@@ -1,9 +1,9 @@
 <template>
     <div id="app">
-        <header>{{ title }}</header>
-        <div class="container">
-            
-        </div>
+        <header :style="bannerImage">{{ title }}</header>
+        <!-- <div class="container"> -->
+              <router-view />
+        <!-- </div> -->
         <footer>
             <ul>
                 <li v-for="(src,index) in iconsrc" :key="src.id" @click="routerlink(index)">
@@ -14,18 +14,19 @@
                 <li v-for="(item ,index) in navitem" :key="item.id" @click="routerlink(index)" :class="{active: shu==index}">{{ item }}</li>
             </ul>
         </footer>
+      
     </div>
 </template>
 
 <script>
 export default {
     name: "App",
-
     data() {
         return {
+            bannerImage:`background-image:url("./static/img/background/navbg.jpg")`,
             title:"",
             shu:'',
-            navitem: ['首页','分类','购物车','我'],
+            navitem: ['HOME','CATEGORY','CARTS','ME'],
             iconsrc:['./static/img/icon/home_act.png','./static/img/icon/classify.png','./static/img/icon/cart.png','./static/img/icon/me.png']
         }
     },
@@ -67,7 +68,7 @@ export default {
 
 <style lang="scss">
 html,body {
-    font: normal 16px "Avenir", Helvetica, Arial, sans-serif;
+    font: normal 16px "微软雅黑", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
@@ -79,25 +80,30 @@ html,body {
     height: 100%;
     header{
         height: 50px;
-        background-color: rgb(107, 218, 238);
+        // background-image: url(./static/img/background/navbg.jpg);
         text-align: center;
         box-sizing: border-box;
-        font-size: 1.5rem;
-        padding: 10px;
+        font-size: 1.8rem;
+        color: black;
+        background-size: cover;
+        line-height: 50PX;
+        letter-spacing: 5px;
     }
     .container{
         box-sizing: border-box;
-        height: calc(100% - 110px);
+        height: calc(100% - 111px);
         padding: 12px;
         overflow-x: hidden;
         overflow-y: auto;
     }
     footer{
         height: 60px;
-        border-top: 1px solid gray;
+        border-top: 1px solid rgb(20, 0, 9);
+        padding-top: 10px;
         ul{
             list-style: none;
             padding: 0;
+            margin: 0;
             li{
                 float: left;
                 width: 25%;

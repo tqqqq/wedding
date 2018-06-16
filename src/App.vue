@@ -22,7 +22,10 @@
 export default {
     name: "App",
     data() {
+        
         return {
+        
+
             bannerImage:`background-image:url("./static/img/background/navbg.jpg")`,
             title:"",
             shu:'',

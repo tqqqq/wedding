@@ -14,15 +14,15 @@
         </div>
         <ul>
             <p class="title">少女最爱的蓬蓬裙</p>
-            <li class="goods" v-for="(bublle,index) in product" :key="bublle.id" v-if="index<5">
+            <li class="goods" v-for="(bublle,index) in product" :key="bublle.id" @click="routerLink(bublle)" v-if="index<5">
                 <img :src="bublle.src" alt="">
-                <p class="name" >{{bublle.name}}</p>
+                <p class="name">{{bublle.name}}</p>
                 <p class="price">￥{{bublle.price}}</p>
             </li>
         </ul>
         <ul>
             <p class="title">女生都梦想的鱼尾裙</p>
-            <li class="goods" v-for="(bublle,index) in product" :key="bublle.id" v-if="index>4&&index<10">
+            <li class="goods" v-for="(bublle,index) in product" :key="bublle.id" @click="routerLink(bublle)" v-if="index>4&&index<10">
                 <img :src="bublle.src" alt="">
                 <p class="name">{{bublle.name}}</p>
                 <p class="price">￥{{bublle.price}}</p>
@@ -30,7 +30,7 @@
         </ul>
         <ul>
             <p class="title">性感一字肩</p>
-            <li class="goods" v-for="(bublle,index) in product" :key="bublle.id" v-if="index>9&&index<15">
+            <li class="goods" v-for="(bublle,index) in product" :key="bublle.id" @click="routerLink(bublle)" v-if="index>9&&index<15">
                 <img :src="bublle.src" alt="">
                 <p class="name">{{bublle.name}}</p>
                 <p class="price">￥{{bublle.price}}</p>
@@ -38,7 +38,7 @@
         </ul>
         <ul>
             <p class="title">浪漫长拖尾</p>
-            <li class="goods" v-for="(bublle,index) in product" :key="bublle.id" v-if="index>14&&index<21">
+            <li class="goods" v-for="(bublle,index) in product" :key="bublle.id" @click="routerLink(bublle)" v-if="index>14&&index<21">
                 <img :src="bublle.src" alt="">
                 <p class="name">{{bublle.name}}</p>
                 <p class="price">￥{{bublle.price}}</p>
@@ -62,6 +62,17 @@ export default {
             //console.log(res.data)
             this.product = res.data;
         });
+    },
+    methods: {
+        //路由跳转
+        routerLink(bublleInfo) {
+            //编程式路由
+            this.$router.push({
+                name: "Details",
+                params: bublleInfo,
+                title:"details",
+            });
+        }
     },
     mounted() {
         var swiper = new Swiper(".swiper-container", {
@@ -109,7 +120,7 @@ body {
     width: 300px;
     height: 200px;
 }
-ul{
+ul {
     margin: 0;
     padding: 0;
 }

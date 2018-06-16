@@ -15,11 +15,7 @@ export default new Router({
             path: '/',
             redirect: '/home'
         },
-        // {
-        //     path: '/details',
-        //     name: 'Details',
-        //     component: Details
-        // },
+        
         {
             path: '/home',
             name: 'Home',
@@ -40,6 +36,11 @@ export default new Router({
             path: '/setting',
             name: 'Setting',
             component: Setting
+        },
+        {
+            path: '/details',
+            name: 'Details',
+            component: Details
         },
       
     ],

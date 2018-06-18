@@ -28,7 +28,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       '@page': resolve('src/page'),
-      // 'bootcss':'bootstrap/dist/css/bootstrap.css',
+      'bootcss':'bootstrap/dist/css/bootstrap.css',
+      'bootjs':'bootstrap/dist/js/bootstrap.js',
       'swiper-css':'swiper/dist/css/swiper.css',
       'swiper-js':'swiper/dist/js/swiper.js',
     }

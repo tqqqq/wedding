@@ -6,7 +6,7 @@
         </div>
 
         <ul>
-            <li v-for="(dress,index) in product" :key="(dress,index).id" >
+            <li v-for="(dress,index) in product" :key="(dress,index).id" @click="routerLink(dress)" >
                 <div class="img">
                     <img :src="dress.src " alt="">
                 </div>
@@ -47,6 +47,15 @@ export default {
             
             
         });
+        },
+         //路由跳转
+        routerLink(dressinfo) {
+            //编程式路由
+            this.$router.push({
+                name: "Details",
+                params: dressinfo,
+                title:"details",
+            });
         }
     }
 };

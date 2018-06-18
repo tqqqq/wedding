@@ -5,7 +5,8 @@ import Details from '@page/details/Details'
 import Carts from '@page/carts/Carts'
 import Classify from '@page/classify/Classify'
 import Setting from '@page/setting/Setting'
-
+import Set from '@page/setting/Set'
+import Address from '@page/setting/Address'
 Vue.use(Router)
 
 export default new Router({
@@ -42,6 +43,17 @@ export default new Router({
             name: 'Details',
             component: Details
         },
+        {
+            path: '/set',
+            name: 'Set',
+            component: Set
+        },
+        {
+            path: '/address',
+            name: 'Address',
+            component: Address
+        },
+
       
     ],
     linkActiveClass: 'active',

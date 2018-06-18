@@ -11,8 +11,8 @@
         <div class="dress_price">所属类别：{{info.category}}</div>
         <div class="dress_price">上市年份：{{info.year}}</div>
         <div class="btns">
-            <div>加入购物车</div>
-            <div>立即购买</div>
+            <div @click="add_cart(info)">加入购物车</div>
+            <div @click="go_cart()">立即购买</div>
         </div>
         <div></div>
     </div>
@@ -26,14 +26,40 @@ export default {
         return {
             bannerImage: `background-image:url("${dressInfo.src}")`,
             info: dressInfo,
-            skillIndex: 0
+            skillIndex: 0,
+            arr_product: []
         };
+    },
+    methods: {
+        //加入购物车
+        add_cart(gown) {
+            //向本地存储中存储添加的商品信息
+            const productInfo = {
+                name: gown.name,
+                price: gown.price,
+                src: gown.src,
+                category: gown.category
+            };
+            this.arr_product.push(JSON.stringify(productInfo));
+            window.localStorage.product = JSON.stringify(this.arr_product); //将storage转变为字符串存储
+            var product = JSON.parse(window.localStorage.product);
+            for (var i = 0; i < product.length; i++) {
+                product[i] = JSON.parse(product[i]);
+            }
+            //此时job中存储的就是对象数组了
+            alert("成功加入购物车");
+            // console.log(window.localStorage.product);
+            //改变父组件中的显示
+            // this.$emit("cart","哈哈哈");
+        },
+        // 前往购物车
+        go_cart() {
+            //跳转到购物车组件
+            this.$router.push({
+                name: "Carts"
+            });
+        }
     }
-    // methods: {
-    //     switchSkill(idx) {
-    //         this.skillIndex = idx;
-    //     }
-    // }
 };
 </script>
 
@@ -46,13 +72,11 @@ export default {
 }
 .title {
     width: 100%;
-    // height: 40px;
     background: url(./../../../static/img/background/titlebg.png);
-    background-size: cover;
+    background-size: 100% 100%;
     box-sizing: border-box;
     background-position: center;
     padding: 20px 0px;
-    // line-height: 40px;
     text-align: center;
 
     p {
@@ -65,17 +89,17 @@ export default {
         white-space: nowrap;
     }
 }
-.dress_desc{
+.dress_desc {
     text-indent: 2em;
 }
-.dress_price{
-//    color: #29f;
+.dress_price {
+    //    color: #29f;
 }
-.btns{
+.btns {
     width: 100%;
     height: 60px;
-    div{
-        width: 30%;
+    div {
+        width: 35%;
         padding: 10px;
         text-align: center;
         margin: 5%;
